@@ -1,4 +1,12 @@
-# Co-Print-3D Mainsail Theme
+# Co-Print-3D Mainsail Theme (unoffical)
+
+I recently upgrade my Creality Ender 3 V3 KE using the Co Print 3D KCM kit (multi-color). It can be purchased here:
+
+[https://coprint3d.com/pages/kcm-klipper-chroma-module](https://coprint3d.com/pages/kcm-klipper-chroma-module)
+
+I rooted my machine and installed Mainsail. I wanted a custom theme so I created this Co Print 3D inspired theme.
+
+## Theme
 
 A custom Mainsail theme tuned for a clean sidebar and a Yellow primary accent color, based on the Co-Print 3D color palette.
 
