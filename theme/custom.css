@@ -1,38 +1,281 @@
 /*
-This is a dark theme for mainsail.
-It is inspired by the Eryone theme.
-GitHub:         https://github.com/dapostol73/MainsailEryoneTheme
-Eryone COLOR PALETTE
-    Background:  #121212;
-    CurrentLine: #282828;
-    Foreground:  #f2f2f2;
-    Comment:     #486da3;
-    Green:       #38ab57;
-    Yellow:      #f6ba1b;
-    Red:         #e74736;
-    Amber:       #bd8f15;
-    Blue:        #547ebd;
-    Gray:        #808080;
+MIT License
+
+Copyright (c) 2025 Daniel Porrey
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Project: Co-Print-3D Mainsail Theme
+Repository: https://github.com/porrey/Co-Print-3D-Mainsail-Theme.git
 */
 
+/* =========================================================
+   Mainsail Custom Theme — Yellow Primary (Clean Sidebar)
+   Version: 1.0.0
+   Base colors:
+     Green  #38ab57
+     Yellow #f6ba1b  (PRIMARY / accent)
+     Red    #e74736
+     Blue   #547ebd
+
+   Save as:
+     <printer_data>/config/.theme/custom.css
+   ========================================================= */
+
 :root {
-    --Primary:        #f6ba1b;    /*Eryone:Yellow*/
-    --Secondary:      #547ebd;    /*Eryone:Blue*/
-    --Green:          #38ab57;    /*Eryone:Green*/
-    --Red:            #e74736;    /*Eryone:Red*/
-    --Warnings:       #bd8f15;    /*Eryone:Amber*/
-    --Text:           #f2f2f2;    /*Eryone:Foreground*/
-    --DarkerText:     #e0e0e0;    
-    --Background:     #282828;    /*Eryone:CurrentLine*/
-    --DarkBackground: #121212;    /*Eryone:Background*/
-    --Toolbars:       #282828;    /*Eryone:CurrentLine*/
-    --Sheets:         #121212;    /*Eryone:Background*/
+  /* Brand */
+  --brand-green:  #38ab57;
+  --brand-yellow: #f6ba1b;
+  --brand-red:    #e74736;
+  --brand-blue:   #547ebd;
+
+  /* Primary accent */
+  --accent: var(--brand-yellow);
+  --accent-rgb: 246, 186, 27; /* #f6ba1b */
+
+  /* Semantic */
+  --ok:   var(--brand-green);
+  --warn: var(--brand-yellow);
+  --err:  var(--brand-red);
+  --info: var(--brand-blue);
+
+  /* Neutrals (dark) */
+  --bg-0: #0f1115;   /* page */
+  --bg-1: #141824;   /* cards */
+  --bg-2: #1a2030;   /* hover/elevated */
+  --fg-0: #e7eaf0;
+  --fg-1: #b8c0d4;
+  --line: rgba(255,255,255,0.10);
+
+  /* UI polish */
+  --radius: 14px;
+  --shadow: 0 10px 26px rgba(0,0,0,0.35);
+  --focus:  0 0 0 3px rgba(246, 186, 27, 0.35);
 }
-.v-application {
-    --v-primary-base: var(--Primary) !important;
-    --v-anchor-base:  var(--Primary) !important;
-    --v-error-base:   var(--Red) !important;
-    --v-success-base: var(--Green) !important;
-    --v-warning-base: var(--Warnings) !important;
-    --v-panel-base:   var(--DarkBackground) !important;
+
+/* ---- Full viewport ---- */
+html, body, #app, .v-application, .v-application__wrap {
+  min-height: 100vh !important;
 }
+
+/* ---- Base ---- */
+html, body {
+  background: var(--bg-0) !important;
+  color: var(--fg-0) !important;
+}
+
+a, .v-link, .text--primary a {
+  color: var(--accent) !important;
+}
+
+/* ---- Main background behavior (only affects main canvas, not sidebar) ---- */
+#app, .v-application, .v-application__wrap, main {
+  background-position: right bottom !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-attachment: fixed !important;
+}
+
+/* =========================================================
+   CARDS / PANELS (IMPORTANT: do NOT style every .v-sheet globally)
+   Instead, target common "card-like" surfaces but exclude the sidebar.
+   ========================================================= */
+
+.v-main .v-card,
+.v-main .v-sheet:not(.v-navigation-drawer):not(.v-navigation-drawer__content),
+.v-main .panel,
+.v-main .content .container .v-card {
+  background: var(--bg-1) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  border: 1px solid var(--line) !important;
+}
+
+.v-main .v-card:hover,
+.v-main .v-sheet:not(.v-navigation-drawer):not(.v-navigation-drawer__content):hover {
+  background: var(--bg-2) !important;
+}
+
+/* =========================================================
+   SIDEBAR (navigation) — keep it "default-like" (no boxed list)
+   ========================================================= */
+
+.v-navigation-drawer {
+  /* subtle tint only; no border line like your earlier version */
+  background: linear-gradient(
+    180deg,
+    rgba(var(--accent-rgb), 0.12),
+    rgba(56,171,87,0.06)
+  ) !important;
+  border-right: none !important;
+}
+
+/* Ensure sidebar list area is NOT treated like a card */
+.v-navigation-drawer .v-sheet,
+.v-navigation-drawer .v-list,
+.v-navigation-drawer .v-navigation-drawer__content {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* Active nav item:
+   - lighter background
+   - remove left bar
+   - right indicator uses accent (yellow) */
+.v-navigation-drawer .v-list-item--active {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--accent-rgb), 0.22),
+    rgba(var(--accent-rgb), 0.14)
+  ) !important;
+
+  border-left: none !important;
+  border-right: none !important;
+
+  box-shadow: inset -4px 0 0 var(--accent) !important;
+}
+
+/* Some builds draw bars via pseudo elements */
+.v-navigation-drawer .v-list-item--active::before,
+.v-navigation-drawer .v-list-item--active::after {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+}
+
+/* Overlay/underlay highlight */
+.v-navigation-drawer .v-list-item--active .v-list-item__overlay,
+.v-navigation-drawer .v-list-item--active .v-list-item__underlay {
+  background: rgba(var(--accent-rgb), 0.10) !important;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.v-btn.primary,
+.v-btn--is-elevated.primary,
+.v-btn.v-btn--contained.primary {
+  background: var(--accent) !important;
+  color: #1a1a1a !important; /* readable on yellow */
+  border-radius: calc(var(--radius) - 4px) !important;
+}
+
+.v-btn.primary:hover {
+  filter: brightness(1.05) !important;
+}
+
+.v-btn:not(.primary) {
+  border-radius: calc(var(--radius) - 4px) !important;
+}
+
+/* =========================================================
+   INPUTS / FOCUS
+   ========================================================= */
+
+.v-input input,
+.v-input textarea,
+.v-select__selections,
+.v-text-field input {
+  color: var(--fg-0) !important;
+}
+
+.v-input--is-focused .v-input__control,
+.v-text-field--is-focused .v-input__control,
+.v-field--focused {
+  box-shadow: var(--focus) !important;
+}
+
+/* =========================================================
+   CHIPS / BADGES
+   ========================================================= */
+
+.v-chip,
+.chip,
+.badge {
+  border-radius: 999px !important;
+  border: 1px solid var(--line) !important;
+  background: rgba(255,255,255,0.05) !important;
+  color: var(--fg-0) !important;
+}
+
+.v-chip.success, .chip.success { background: rgba(56,171,87,0.18) !important; border-color: rgba(56,171,87,0.45) !important; }
+.v-chip.warning, .chip.warning { background: rgba(246,186,27,0.18) !important; border-color: rgba(246,186,27,0.45) !important; }
+.v-chip.error,   .chip.error   { background: rgba(231, 71,54,0.18) !important; border-color: rgba(231, 71,54,0.45) !important; }
+.v-chip.info,    .chip.info    { background: rgba(84,126,189,0.18) !important; border-color: rgba(84,126,189,0.45) !important; }
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.v-progress-linear__determinate,
+.v-progress-circular__overlay {
+  stroke: var(--accent) !important;
+  background-color: rgba(var(--accent-rgb), 0.20) !important;
+}
+
+/* =========================================================
+   ALERTS
+   ========================================================= */
+
+.v-alert.success { background: rgba(56,171,87,0.16) !important; border: 1px solid rgba(56,171,87,0.45) !important; }
+.v-alert.warning { background: rgba(246,186,27,0.16) !important; border: 1px solid rgba(246,186,27,0.45) !important; }
+.v-alert.error   { background: rgba(231, 71,54,0.16) !important; border: 1px solid rgba(231, 71,54,0.45) !important; }
+.v-alert.info    { background: rgba(84,126,189,0.16) !important; border: 1px solid rgba(84,126,189,0.45) !important; }
+
+/* =========================================================
+   SWITCHES
+   ========================================================= */
+
+.v-switch .v-input--selection-controls__ripple,
+.v-switch .v-selection-control__ripple {
+  color: var(--accent) !important;
+}
+
+.v-switch.v-input--is-label-active .v-switch__track {
+  background: rgba(var(--accent-rgb), 0.35) !important;
+}
+
+.v-switch.v-input--is-label-active .v-switch__thumb {
+  background: var(--accent) !important;
+}
+
+/* =========================================================
+   TABLES / DIVIDERS
+   ========================================================= */
+
+.v-data-table,
+.v-data-table__wrapper table {
+  background: transparent !important;
+}
+
+.v-divider,
+hr {
+  border-color: var(--line) !important;
+}
+
+/* =========================================================
+   OPTIONAL STATE TEXT COLORS
+   ========================================================= */
+
+.text-success { color: var(--ok) !important; }
+.text-warning { color: var(--warn) !important; }
+.text-error   { color: var(--err) !important; }
+.text-info    { color: var(--info) !important; }
