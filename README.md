@@ -1,4 +1,4 @@
-# Co-Print-3D Mainsail Theme (unoffical)
+# Co-Print 3D Mainsail Theme (unoffical)
 
 I recently upgrade my Creality Ender 3 V3 KE using the Co Print 3D KCM kit (multi-color). It can be purchased here:
 
