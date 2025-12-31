@@ -15,6 +15,8 @@ A custom Mainsail theme tuned for a clean sidebar and a Yellow primary accent co
 - Red: `#e74736`
 - Blue: `#547ebd`
 
+![](https://raw.githubusercontent.com/porrey/Co-Print-3D-Mainsail-Theme/refs/heads/main/src/Screenshot.png)
+
 ## What this theme includes
 
 - `custom.css` (theme styling)
