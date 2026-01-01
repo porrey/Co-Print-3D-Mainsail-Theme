@@ -66,6 +66,18 @@ cd /usr/data/printer_data/config
 ```bash
 git clone https://github.com/porrey/Co-Print-3D-Mainsail-Theme.git .theme
 ```
+If the above command fails, you may need to install git. Run these two commands and then try again.
+
+a) Update the local packages
+```
+sudo apt-get update
+```
+
+b) Install git
+```
+sudo apt-get install git -y
+```
+
 ### 4) Hard refresh your browser
 
 After install/update, do a hard refresh:
