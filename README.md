@@ -94,8 +94,9 @@ path: ~/printer_data/config/.theme
 origin: https://github.com/porrey/Co-Print-3D-Mainsail-Theme.git
 primary_branch: main
 managed_services:
-Notes: - path must point to the folder that contains the .git directory (your cloned .theme). - If your host uses /usr/data/printer_data/config, then set: - path: /usr/data/printer_data/config/.theme - managed_services can be left blank for a theme (no service to restart).
 ```
+
+> Notes: - path must point to the folder that contains the .git directory (your cloned .theme). - If your host uses /usr/data/printer_data/config, then set: - path: /usr/data/printer_data/config/.theme - managed_services can be left blank for a theme (no service to restart).
 
 3) Save `moonraker.conf`, then restart Moonraker (or reboot the host). After that, you should see a new entry in Settings → Update Manager.
 
